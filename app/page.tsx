@@ -18,7 +18,7 @@ export default function Page() {
   };
 
   const onSubmitNovo = async (dataUser: any) => {
-    const response = await fetch(`https://uat-yiro-belcorp.novopayment.net//api/v1/setcode?consultantCode=000765341&countryCode=PE`);
+    const response = await fetch(`https://uat-yiro-belcorp.novopayment.net/api/v1/setcode?consultantCode=000765341&countryCode=PE`);
     const { data } = await response.json();
     replace(data);
   };
