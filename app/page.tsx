@@ -11,8 +11,14 @@ import { useRouter } from 'next/navigation';
 export default function Page() {
   const { replace } = useRouter();
 
-  const onSubmit = async (dataUser: any) => {
-    const response = await fetch(`/api/v1/setcode?consultantCode=000765341&countryCode=PE`);
+  const onSubmitYiro = async (dataUser: any) => {
+    const response = await fetch(`https://yiro-qas.belcorp.biz:3000/api/v1/setcode?consultantCode=000765341&countryCode=PE`);
+    const { data } = await response.json();
+    replace(data);
+  };
+
+  const onSubmitNovo = async (dataUser: any) => {
+    const response = await fetch(`https://uat-yiro-belcorp.novopayment.net//api/v1/setcode?consultantCode=000765341&countryCode=PE`);
     const { data } = await response.json();
     replace(data);
   };
@@ -35,7 +41,8 @@ export default function Page() {
             </a>
             , brought to you by Vercel.
           </p>
-           <button onClick={onSubmit}>Fetch Data</button>
+           <button onClick={onSubmitYiro}>YIRO</button>
+           <button onClick={onSubmitNovo}>NOVO</button>
           <Link
             href="/login"
             className="flex items-center gap-5 self-start rounded-lg bg-blue-500 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-400 md:text-base"
