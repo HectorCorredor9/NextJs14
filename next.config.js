@@ -1,41 +1,33 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  crossOrigin: 'anonymous',
+
   async headers() {
     return [
       {
-        source: '/:path*',
+        source: '/api/v1/:path*',
         headers: [
-          { key: 'Access-Control-Allow-Credentials', value: 'true' },
           {
             key: 'Access-Control-Allow-Origin',
-            value: 'https://yiro-qas.belcorp.biz:3000',
+            value: '*',
           },
-          { key: 'Access-Control-Allow-Methods', value: 'GET,DELETE,PATCH,POST,PUT' },
+          {
+            key: 'Access-Control-Allow-Methods',
+            value: 'GET, DELETE, PATCH, POST, PUT',
+          },
           {
             key: 'Access-Control-Allow-Headers',
             value:
               'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version',
           },
-        ],
-      },
-      {
-        source: '/:path*',
-        headers: [
-          { key: 'Access-Control-Allow-Credentials', value: 'true' },
           {
-            key: 'Access-Control-Allow-Origin',
-            value: 'https://uat-yiro-belcorp.novopayment.net',
-          },
-          { key: 'Access-Control-Allow-Methods', value: 'GET,DELETE,PATCH,POST,PUT' },
-          {
-            key: 'Access-Control-Allow-Headers',
-            value:
-              'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version',
+            key: 'Access-Control-Allow-Credentials',
+            value: 'true',
           },
         ],
       },
     ];
   },
 };
-
-module.exports = nextConfig;
+ 
+export default nextConfig;
