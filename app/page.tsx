@@ -11,18 +11,17 @@ import { useRouter } from 'next/navigation';
 export default function Page() {
   const { replace } = useRouter();
 
-  const onSubmitYiro = async (dataUser: any) => {
+  const onSubmitYiro = async () => {
     const response = await fetch(`https://yiro-qas.belcorp.biz:3000/api/v1/setcode?consultantCode=000765341&countryCode=PE`);
     const { data } = await response.json();
     replace(data);
   };
 
-  const onSubmitNovo = async (dataUser: any) => {
+  const onSubmitNovo = async () => {
     const response = await fetch(`https://uat-yiro-belcorp.novopayment.net/api/v1/setcode?consultantCode=000765341&countryCode=PE`);
     const { data } = await response.json();
     replace(data);
   };
-  
 
   return (
     <main className="flex min-h-screen flex-col p-6">
