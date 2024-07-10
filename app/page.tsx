@@ -1,12 +1,12 @@
 'use client'
 
-import AcmeLogo from '@/app/ui/acme-logo';
-import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
-import styles from '@/app/ui/home.module.css';
-import { lusitana } from '@/app/ui/fonts';
 import Image from 'next/image';
+import { lusitana } from '@/app/ui/fonts';
+import AcmeLogo from '@/app/ui/acme-logo';
 import { useRouter } from 'next/navigation';
+import styles from '@/app/ui/home.module.css';
+import { ArrowRightIcon } from '@heroicons/react/24/outline';
 
 export default function Page() {
   const { replace } = useRouter();
@@ -14,13 +14,13 @@ export default function Page() {
   const onSubmitYiro = async () => {
     const response = await fetch(`https://yiro-qas.belcorp.biz:3000/api/v1/setcode?consultantCode=000765341&countryCode=PE`);
     const { data } = await response.json();
-    replace(data);
+    replace(`https://yiro-qas.belcorp.biz:3000${data}`);
   };
 
   const onSubmitNovo = async () => {
-    const response = await fetch(`https://uat-yiro-belcorp.novopayment.net/api/v1/setcode?consultantCode=000765341&countryCode=PE`);
+    const response = await fetch(`https://efe9-181-61-205-76.ngrok-free.app/api/v1/setcode?consultantCode=000765341&countryCode=PE`);
     const { data } = await response.json();
-    replace(data);
+    replace(`https://efe9-181-61-205-76.ngrok-free.app${data}`);
   };
 
   return (
